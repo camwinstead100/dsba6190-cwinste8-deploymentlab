@@ -41,7 +41,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "subnet-${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}"
+  name                 = "subnet-${var.class_name}-${var.student_name}"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
@@ -51,7 +51,7 @@ resource "azurerm_subnet" "subnet" {
 // SQL Server
 
 resource "azurerm_mssql_server" "sql" {
-  name                         = "sql-${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}"
+  name                         = "sql-${var.class_name}-${var.student_name}"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
@@ -68,7 +68,7 @@ resource "azurerm_mssql_virtual_network_rule" "vnetrule" {
 // SQL Database
 
 resource "azurerm_mssql_database" "db" {
-  name        = "db-${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}"
+  name        = "db-${var.class_name}-${var.student_name}"
   server_id   = azurerm_mssql_server.sql.id
   collation   = "SQL_Latin1_General_CP1_CI_AS"
   max_size_gb = 1
@@ -79,7 +79,7 @@ resource "azurerm_mssql_database" "db" {
 // Storage Account
 
 resource "azurerm_storage_account" "storage" {
-  name                     = "sto${var.class_name}${var.student_name}${var.environment}${random_integer.deployment_id_suffix.result}"
+  name                     = "sto${var.class_name}${var.student_name}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
