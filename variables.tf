@@ -1,6 +1,6 @@
 variable "tag_class" {
   type    = string
-  default = "dsba6190"
+  default = "6190"
 }
 
 variable "tag_instructor" {
@@ -17,7 +17,7 @@ variable "tag_semester" {
 variable "location" {
   description = "Location of Resource Group"
   type        = string
-  default     = "eastus"
+  default     = "east"
 
   validation {
     condition     = contains(["eastus"], lower(var.location))
@@ -31,13 +31,13 @@ variable "location" {
 variable "environment" {
   description = "Environment"
   type        = string
-  default     = "dev"
+  default     = ""
 }
 
 variable "student_name" {
   description = "Application Name"
   type        = string
-  default     = "camw"
+  default     = "cam"
 }
 
 variable "class_name" {
