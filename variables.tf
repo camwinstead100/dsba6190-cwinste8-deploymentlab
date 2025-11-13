@@ -17,7 +17,7 @@ variable "tag_semester" {
 variable "location" {
   description = "Location of Resource Group"
   type        = string
-  default     = "east"
+  default     = ""
 
   validation {
     condition     = contains(["eastus"], lower(var.location))
